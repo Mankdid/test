@@ -279,6 +279,42 @@ textarea {
     border-left: 3px solid var(--primary);
 }
 
+/* Install Instructions */
+.install-instructions {
+    background: var(--background);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.install-instructions h3 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.install-instructions ol {
+    padding-left: 1.5rem;
+    line-height: 2;
+}
+
+.install-instructions li {
+    margin-bottom: 0.5rem;
+}
+
+#filesList {
+    list-style: none;
+    padding: 0;
+}
+
+#filesList li {
+    padding: 0.75rem 1rem;
+    background: white;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    border-left: 3px solid var(--accent);
+}
+
 /* Features Section */
 .features {
     background: white;

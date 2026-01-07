@@ -1,17 +1,19 @@
-# 🚀 AI Website Generator
+# 🚀 AI WordPress Template Generator
 
-Un service de génération automatisée de sites web professionnels avec l'Intelligence Artificielle, inspiré de ZipWP.
+Un service de génération automatisée de templates WordPress professionnels avec l'Intelligence Artificielle, optimisé pour le thème Astra.
 
 ## 📋 Description
 
-AI Website Generator est un outil puissant qui permet de créer des sites web complets et professionnels en moins de 60 secondes. Propulsé par Claude AI d'Anthropic, il génère automatiquement:
+AI WordPress Template Generator est un outil puissant qui permet de créer des templates WordPress complets et professionnels en moins de 60 secondes. Propulsé par Claude AI d'Anthropic, il génère automatiquement:
 
-- 🏗️ **Structure du site** (sitemap, navigation)
+- 🏗️ **Templates WordPress** prêts à importer
 - ✍️ **Contenu professionnel** (textes SEO-optimisés)
-- 🎨 **Design moderne** (layouts responsive)
+- 🎨 **Configuration Astra** (thème WordPress léger et rapide)
+- 🧱 **Blocs Spectra** (constructeur de blocs WordPress)
 - 🌈 **Schémas de couleurs** adaptés à votre secteur
 - 📱 **Sites mobile-friendly**
 - 🌍 **Support multi-langues**
+- 📦 **Blueprints réutilisables** pour gagner du temps
 
 ## ✨ Fonctionnalités principales
 
@@ -31,10 +33,12 @@ AI Website Generator est un outil puissant qui permet de créer des sites web co
 - Support de 5 langues (FR, EN, ES, DE, IT)
 - Génération de schémas de couleurs harmonieux
 
-### Export facile
-- Prévisualisation en temps réel
-- Téléchargement en ZIP
-- Code HTML/CSS/JS propre et lisible
+### Export WordPress
+- Format WXR (WordPress eXtended RSS)
+- Configuration Astra incluse
+- Blocs Spectra personnalisés
+- Import en un clic dans WordPress
+- Blueprints sauvegardables et réutilisables
 
 ## 🛠️ Technologies utilisées
 
@@ -44,6 +48,12 @@ AI Website Generator est un outil puissant qui permet de créer des sites web co
 - **Anthropic Claude API** - Intelligence artificielle
 - **Jinja2** - Moteur de templates
 - **Pydantic** - Validation des données
+
+### WordPress Integration
+- **Astra Theme** - Thème WordPress léger et performant
+- **Spectra Blocks** - Constructeur de blocs WordPress
+- **WXR Format** - Export/Import WordPress standard
+- **Gutenberg Blocks** - Éditeur de blocs natif
 
 ### Frontend
 - **HTML5 / CSS3**
@@ -93,7 +103,7 @@ PORT=8000
 
 5. **Créer les dossiers nécessaires**
 ```bash
-mkdir -p generated_sites templates
+mkdir -p generated_templates templates blueprints
 ```
 
 ## 🚀 Démarrage
@@ -116,9 +126,11 @@ Le serveur démarre sur `http://localhost:8000`
    - Public cible (optionnel)
    - Langue souhaitée
    - Pages à inclure (optionnel)
-3. Cliquer sur "Générer mon site web"
+3. Cliquer sur "Générer mon template WordPress"
 4. Attendre ~60 secondes
-5. Prévisualiser et télécharger votre site!
+5. Télécharger le fichier WXR et les fichiers de configuration
+6. Importer dans WordPress (Outils > Importer > WordPress)
+7. Activer le thème Astra et appliquer la configuration!
 
 ## 📁 Structure du projet
 
@@ -126,17 +138,21 @@ Le serveur démarre sur `http://localhost:8000`
 test/
 ├── backend/
 │   ├── __init__.py
-│   ├── main.py              # API FastAPI principale
-│   ├── ai_generator.py      # Génération de contenu IA
-│   └── website_builder.py   # Construction HTML/CSS/JS
+│   ├── main.py                    # API FastAPI principale
+│   ├── ai_generator.py            # Génération de contenu IA
+│   ├── wordpress_generator.py     # Génération WordPress/WXR
+│   ├── astra_configurator.py      # Configuration du thème Astra
+│   ├── spectra_builder.py         # Constructeur de blocs Spectra
+│   └── blueprint_manager.py       # Gestion des blueprints
 ├── frontend/
-│   ├── index.html           # Interface utilisateur
-│   ├── style.css            # Styles
-│   └── script.js            # Logique frontend
-├── templates/               # Templates de base
-├── generated_sites/         # Sites générés (créé automatiquement)
-├── requirements.txt         # Dépendances Python
-├── .env.example            # Variables d'environnement exemple
+│   ├── index.html                 # Interface utilisateur
+│   ├── style.css                  # Styles
+│   └── script.js                  # Logique frontend
+├── templates/                     # Templates de base
+├── blueprints/                    # Blueprints réutilisables
+├── generated_templates/           # Templates WordPress générés
+├── requirements.txt               # Dépendances Python
+├── .env.example                   # Variables d'environnement exemple
 ├── .gitignore
 └── README.md
 ```
@@ -144,7 +160,7 @@ test/
 ## 🔧 API Endpoints
 
 ### `POST /api/generate`
-Génère un site web complet.
+Génère un template WordPress complet avec configuration Astra.
 
 **Corps de la requête:**
 ```json
@@ -154,26 +170,34 @@ Génère un site web complet.
   "industry": "technology",
   "target_audience": "Professionnels",
   "language": "fr",
-  "pages": ["Accueil", "Services", "Contact"]
+  "pages": ["Accueil", "Services", "Contact"],
+  "save_as_blueprint": false
 }
 ```
 
 **Réponse:**
 ```json
 {
-  "site_id": "mon-entreprise-abc123",
-  "preview_url": "/api/preview/mon-entreprise-abc123",
+  "template_id": "mon-entreprise-abc123",
   "download_url": "/api/download/mon-entreprise-abc123",
-  "pages": ["index", "services", "contact"],
-  "message": "Site web généré avec succès!"
+  "files": {
+    "wxr": "template.xml",
+    "astra_config": "astra-settings.json",
+    "spectra_blocks": "spectra-blocks.json"
+  },
+  "pages": ["accueil", "services", "contact"],
+  "message": "Template WordPress généré avec succès!"
 }
 ```
 
-### `GET /api/preview/{site_id}`
-Prévisualise un site généré.
+### `GET /api/download/{template_id}`
+Télécharge le template WordPress complet en ZIP.
 
-### `GET /api/download/{site_id}`
-Télécharge un site en format ZIP.
+### `POST /api/blueprints/save`
+Sauvegarde un template comme blueprint réutilisable.
+
+### `GET /api/blueprints/list`
+Liste tous les blueprints disponibles.
 
 ### `GET /api/health`
 Vérifie l'état du service.
@@ -210,14 +234,15 @@ Sites disponibles en:
 ## 🚧 Améliorations futures
 
 - [ ] Support de plus de langues
-- [ ] Système de templates personnalisables
+- [ ] Plus de variations de blocs Spectra
 - [ ] Génération d'images avec DALL-E
-- [ ] Éditeur visuel intégré
-- [ ] Hébergement automatique
-- [ ] Intégration de CMS
-- [ ] Génération de formulaires de contact fonctionnels
-- [ ] Analytics intégré
-- [ ] SEO avancé
+- [ ] Intégration WooCommerce pour sites e-commerce
+- [ ] Support d'autres page builders (Elementor, Beaver Builder)
+- [ ] Génération de formulaires Contact Form 7
+- [ ] Export vers WordPress.com et WP Engine
+- [ ] Optimisation SEO automatique (Yoast/RankMath)
+- [ ] Génération de contenus de blog
+- [ ] Templates pour custom post types
 
 ## 🤝 Contribution
 
@@ -230,21 +255,21 @@ Les contributions sont les bienvenues! N'hésitez pas à:
 
 Ce projet est sous licence MIT.
 
-## 💡 Inspiré par
-
-Ce projet est inspiré par [ZipWP](https://zipwp.com/), un générateur de sites WordPress alimenté par l'IA.
-
 ## 📞 Support
 
 Pour toute question ou problème:
 - Ouvrir une issue sur GitHub
 - Consulter la documentation de l'API Claude: https://docs.anthropic.com
+- Documentation WordPress: https://wordpress.org/documentation/
+- Documentation Astra: https://wpastra.com/docs/
 
 ## 🙏 Remerciements
 
 - **Anthropic** pour l'API Claude AI
 - **FastAPI** pour le framework web
-- **ZipWP** pour l'inspiration
+- **Astra Team** pour le thème WordPress
+- **Spectra Team** pour le constructeur de blocs
+- La communauté **WordPress** pour l'écosystème open-source
 
 ---
 

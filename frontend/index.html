@@ -9,8 +9,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>🚀 AI Website Generator</h1>
-            <p class="subtitle">Créez un site web professionnel en moins de 60 secondes avec l'IA</p>
+            <h1>🚀 AI WordPress Template Generator</h1>
+            <p class="subtitle">Créez un template WordPress/Astra professionnel en moins de 60 secondes avec l'IA</p>
         </header>
 
         <main>
@@ -89,8 +89,15 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" id="saveAsBlueprint" name="saveAsBlueprint" style="width: auto;">
+                            Sauvegarder comme blueprint réutilisable
+                        </label>
+                    </div>
+
                     <button type="submit" class="btn-primary" id="generateBtn">
-                        ✨ Générer mon site web
+                        ✨ Générer mon template WordPress
                     </button>
                 </form>
 
@@ -118,36 +125,52 @@
                 </div>
 
                 <div id="resultContainer" class="result-container" style="display: none;">
-                    <h2>🎉 Votre site est prêt !</h2>
+                    <h2>🎉 Votre template WordPress est prêt !</h2>
                     <p id="resultMessage"></p>
 
                     <div class="result-actions">
-                        <a id="previewLink" href="#" target="_blank" class="btn-primary">
-                            👁️ Prévisualiser
-                        </a>
-                        <a id="downloadLink" href="#" class="btn-secondary">
-                            📥 Télécharger (ZIP)
+                        <a id="downloadLink" href="#" class="btn-primary">
+                            📥 Télécharger le template (ZIP)
                         </a>
                     </div>
 
                     <div class="pages-list">
-                        <h3>Pages générées:</h3>
+                        <h3>Fichiers générés:</h3>
+                        <ul id="filesList">
+                            <li>📄 wordpress-export.xml (WXR)</li>
+                            <li>⚙️ astra-settings.json</li>
+                            <li>🎨 astra-custom.css</li>
+                            <li>🧱 spectra-blocks.json</li>
+                            <li>📖 README.txt (instructions)</li>
+                        </ul>
+                        <h3 style="margin-top: 1.5rem;">Pages générées:</h3>
                         <ul id="pagesList"></ul>
                     </div>
 
+                    <div class="install-instructions">
+                        <h3>📋 Instructions d'installation:</h3>
+                        <ol>
+                            <li>Installer WordPress sur votre serveur</li>
+                            <li>Installer et activer le thème <strong>Astra</strong></li>
+                            <li>Installer et activer le plugin <strong>Spectra</strong></li>
+                            <li>Importer le fichier WXR (Outils > Importer)</li>
+                            <li>Appliquer la configuration Astra</li>
+                        </ol>
+                    </div>
+
                     <button onclick="location.reload()" class="btn-link">
-                        Créer un autre site
+                        Créer un autre template
                     </button>
                 </div>
             </div>
 
             <div class="features">
-                <h2>Pourquoi utiliser AI Website Generator ?</h2>
+                <h2>Pourquoi utiliser AI WordPress Template Generator ?</h2>
                 <div class="feature-grid">
                     <div class="feature">
                         <span class="feature-icon">⚡</span>
                         <h3>Ultra rapide</h3>
-                        <p>Site généré en moins de 60 secondes</p>
+                        <p>Template généré en moins de 60 secondes</p>
                     </div>
                     <div class="feature">
                         <span class="feature-icon">🤖</span>
@@ -156,23 +179,23 @@
                     </div>
                     <div class="feature">
                         <span class="feature-icon">🎨</span>
-                        <h3>Design moderne</h3>
-                        <p>Templates responsive et professionnels</p>
+                        <h3>Thème Astra</h3>
+                        <p>Configuration optimisée du thème WordPress le plus rapide</p>
                     </div>
                     <div class="feature">
-                        <span class="feature-icon">📱</span>
-                        <h3>Mobile-friendly</h3>
-                        <p>Parfaitement adapté à tous les écrans</p>
+                        <span class="feature-icon">🧱</span>
+                        <h3>Blocs Spectra</h3>
+                        <p>Blocs Gutenberg personnalisés et prêts à utiliser</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">📦</span>
+                        <h3>Blueprints</h3>
+                        <p>Sauvegardez et réutilisez vos templates favoris</p>
                     </div>
                     <div class="feature">
                         <span class="feature-icon">🌍</span>
                         <h3>Multi-langues</h3>
-                        <p>Créez des sites dans plusieurs langues</p>
-                    </div>
-                    <div class="feature">
-                        <span class="feature-icon">💼</span>
-                        <h3>Professionnel</h3>
-                        <p>Contenu SEO-optimisé et engageant</p>
+                        <p>Templates dans plusieurs langues</p>
                     </div>
                 </div>
             </div>

@@ -17,13 +17,17 @@ form.addEventListener('submit', async (e) => {
     const pages = Array.from(form.querySelectorAll('input[name="pages"]:checked'))
         .map(cb => cb.value);
 
+    const saveAsBlueprint = formData.get('saveAsBlueprint') === 'on';
+
     const requestData = {
         business_name: formData.get('businessName'),
         business_description: formData.get('businessDescription'),
         industry: formData.get('industry') || null,
         target_audience: formData.get('targetAudience') || null,
         language: formData.get('language'),
-        pages: pages.length > 0 ? pages : null
+        pages: pages.length > 0 ? pages : null,
+        save_as_blueprint: saveAsBlueprint,
+        blueprint_name: saveAsBlueprint ? formData.get('businessName') : null
     };
 
     // Afficher le loading
@@ -87,10 +91,13 @@ function showResults(result) {
     resultContainer.style.display = 'block';
 
     // Message
-    document.getElementById('resultMessage').textContent = result.message;
+    let message = result.message;
+    if (result.blueprint_id) {
+        message += ` (Blueprint sauvegardé: ${result.blueprint_id})`;
+    }
+    document.getElementById('resultMessage').textContent = message;
 
-    // Liens
-    document.getElementById('previewLink').href = result.preview_url;
+    // Lien de téléchargement
     document.getElementById('downloadLink').href = result.download_url;
 
     // Liste des pages

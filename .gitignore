@@ -14,8 +14,9 @@ dist/
 # Environment variables
 .env
 
-# Generated sites
-generated_sites/
+# Generated templates and blueprints
+generated_templates/
+blueprints/
 
 # IDE
 .vscode/
